@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects - Cozycove</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+        :root {
+            --beige-mid: #D2B48C; --beige-dark: #A0522D; --dark-text: #3C3633;
+        }
+
+        body {
+            cursor: url('/images/cursor.png') 16 16, auto;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url('/images/projectsbg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 90px;
+            box-sizing: border-box;
+        }
+
+        /* --- ✅ FINAL RESPONSIVE NAVIGATION --- */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 10px 40px;
+            display: flex; align-items: center; position: fixed; top: 0; left: 0;
+            width: 100%; z-index: 1000; box-sizing: border-box;
+        }
+        .nav-left { display: flex; align-items: center; }
+        .logo-container img { height: 70px; margin-right: 40px; }
+        .menu { display: flex; align-items: center; }
+        .menu a {
+            margin: 0 15px; text-decoration: none; color: var(--beige-dark);
+            font-weight: bold; font-size: 18px; transition: color 0.3s; white-space: nowrap;
+        }
+        .menu a:hover { color: var(--dark-text); }
+        .nav-right { margin-left: auto; display: flex; align-items: center; }
+        .lottie-right { display: block; }
+        .hamburger-menu { display: none; }
+
+        /* --- Content & Card Styles --- */
+        .content {
+            padding: 40px;
+            text-align: center;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+        .content h2 {
+            font-size: 42px;
+            margin-top: 0;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            width: 250px; /* Slightly larger for better visuals */
+            height: 250px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            font-size: 18px; /* Adjusted font size */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+        }
+
+        .card .image-link {
+            display: block;
+            width: 100%;
+            height: 80%;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card p {
+            margin: 0;
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        /* Lightbox */
+        #lightbox-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: none; justify-content: center;
+            align-items: center; z-index: 9999;
+        }
+        #lightbox-img {
+            max-width: 90%; max-height: 85%; border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+        }
+        #lightbox-close {
+            color: white; font-size: 40px; font-weight: bold; position: absolute;
+            top: 20px; right: 30px; cursor: pointer; transition: transform 0.3s;
+        }
+        #lightbox-close:hover { transform: scale(1.2); }
+
+        /* "More Examples" Button & Gallery */
+        #more-btn {
+            margin-top: 40px; padding: 12px 24px; font-size: 16px; font-weight: bold;
+            background-color: var(--beige-mid); color: white; border: none;
+            border-radius: 8px; cursor: pointer; transition: 0.3s;
+        }
+        #more-btn:hover { background-color: var(--beige-dark); }
+        .more-gallery {
+            margin-top: 30px; display: none; flex-wrap: wrap;
+            justify-content: center; gap: 20px;
+        }
+        .more-gallery img {
+            width: 200px; height: 200px; object-fit: cover;
+            border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .more-gallery img:hover { transform: scale(1.05); }
+
+        /* --- ✅ RESPONSIVE STYLES --- */
+        @media (max-width: 992px) {
+            /* Navigation for Mobile/Tablet */
+            nav { justify-content: space-between; }
+            .menu { display: none; position: absolute; top: 90px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px 0; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+            .nav-active .menu { display: flex; }
+            .menu a { margin: 15px 0; text-align: center; }
+            .lottie-right { display: none; }
+            .hamburger-menu { display: flex; flex-direction: column; cursor: pointer; background: none; border: none; padding: 0; }
+            .hamburger-menu .line { width: 25px; height: 3px; background-color: var(--dark-text); margin: 4px 0; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 80px; }
+            .logo-container img { height: 60px; margin-right: 20px; }
+            .content { padding: 30px 15px; }
+            .content h2 { font-size: 32px; }
+            .card-container, .more-gallery { gap: 15px; }
+            .card, .more-gallery img { width: 150px; height: 150px; }
+            .card p { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="lightbox-overlay">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Fullscreen Image">
+</div>
+
+<nav id="navbar">
+    <div class="nav-left">
+        <div class="logo-container">
+            <a href="index.html"><img src="/images/cozycovelogo.jpeg" alt="Logo"></a>
+        </div>
+        <div class="menu">
+            <a href="index.html">Home</a> 
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="whyus.html">Why Us</a>
+            <a href="fromconceptocreation.html">From Concept to Creation</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    <div class="nav-right">
+        <div class="lottie-right">
+            <lottie-player src="/animations/engineers.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+        </div>
+        <button class="hamburger-menu">
+            <div class="line"></div><div class="line"></div><div class="line"></div>
+        </button>
+    </div>
+</nav>
+
+<div class="content" data-aos="fade-in">
+    <h2>Our Projects</h2>
+
+    <div class="card-container">
+        <div class="card" data-aos="fade-up">
+            <a href="/images/project1.png" class="image-link lightbox">
+                <img src="/images/project1.png" alt="Project 1">
+            </a>
+            <p>Living Room</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <a href="/images/project2.png" class="image-link lightbox">
+                <img src="/images/project2.png" alt="Project 2">
+            </a>
+            <p>Modern Kitchen</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <a href="/images/project3.png" class="image-link lightbox">
+                <img src="/images/project3.png" alt="Project 3">
+            </a>
+            <p>Bedroom Retreat</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+            <a href="/images/project4.png" class="image-link lightbox">
+                <img src="/images/project4.png" alt="Project 4">
+            </a>
+            <p>Office Space</p>
+        </div>
+    </div>
+
+    <button id="more-btn" data-aos="fade-up">More Examples</button>
+
+    <div id="more-gallery" class="more-gallery">
+        </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // JAVASCRIPT FOR HAMBURGER MENU
+        const hamburger = document.querySelector('.hamburger-menu');
+        const nav = document.getElementById('navbar');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+        });
+        
+        // Initialize AOS animations
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // Lightbox and Gallery Logic
+        const overlay = document.getElementById('lightbox-overlay');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const moreBtn = document.getElementById('more-btn');
+        const moreGallery = document.getElementById('more-gallery');
+
+        function openLightbox(e) {
+            e.preventDefault();
+            lightboxImg.src = this.href;
+            overlay.style.display = 'flex';
+        }
+
+        function closeLightbox(e) {
+            if (!e || e.target === overlay || e.target.id === 'lightbox-close') {
+                overlay.style.display = 'none';
+                lightboxImg.src = '';
+            }
+        }
+        
+        document.querySelectorAll('.lightbox').forEach(link => {
+            link.addEventListener('click', openLightbox);
+        });
+
+        overlay.addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        moreBtn.addEventListener('click', () => {
+            const isVisible = moreGallery.style.display === "flex";
+            if (!isVisible && moreGallery.innerHTML === "") {
+                // Populate the gallery only the first time it's opened
+                const examples = [
+                    'examples1.png', 'examples2.png', 'examples3.png', 'examples4.png',
+                    'examples5.png', 'examples6.png', 'examples7.png', 'examples8.png'
+                ];
+                let galleryHTML = '';
+                examples.forEach(img => {
+                    galleryHTML += `
+                        <a href="/images/examples/${img}" class="lightbox">
+                            <img src="/images/examples/${img}" alt="Example Image" data-aos="zoom-in">
+                        </a>`;
+                });
+                moreGallery.innerHTML = galleryHTML;
+                // Re-initialize lightbox for the new images
+                moreGallery.querySelectorAll('.lightbox').forEach(link => {
+                    link.addEventListener('click', openLightbox);
+                });
+            }
+            moreGallery.style.display = isVisible ? "none" : "flex";
+            moreBtn.textContent = isVisible ? "More Examples" : "Hide Examples";
+        });
+    });
+</script>
+
+</body>
+</html>

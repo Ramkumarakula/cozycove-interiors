@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Cozycove</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+        :root {
+            --beige-lightest: #F5F5DC; --beige-lighter: #E8E0D4; --beige-mid: #D2B48C;
+            --beige-dark: #A0522D; --dark-text: #3C3633; --light-text: #605a56; --white: #ffffff;
+        }
+        body {
+            cursor: url('/images/cursor.png') 16 16, auto;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url('/images/project2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 90px;
+            box-sizing: border-box;
+        }
+
+        /* --- ✅ FINAL RESPONSIVE NAVIGATION --- */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 10px 40px;
+            display: flex; align-items: center; position: fixed; top: 0; left: 0;
+            width: 100%; z-index: 1000; box-sizing: border-box;
+        }
+        .nav-left { display: flex; align-items: center; }
+        .logo-container img { height: 70px; margin-right: 40px; }
+        .menu { display: flex; align-items: center; }
+        .menu a {
+            margin: 0 15px; text-decoration: none; color: var(--beige-dark);
+            font-weight: bold; font-size: 18px; transition: color 0.3s; white-space: nowrap;
+        }
+        .menu a:hover { color: var(--dark-text); }
+        .nav-right { margin-left: auto; display: flex; align-items: center; }
+        .lottie-right { display: block; }
+        .hamburger-menu { display: none; }
+
+        /* --- Contact Section Styling --- */
+        .contact-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .contact-section h2 {
+            text-align: center;
+            color: var(--dark-text);
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .contact-info p {
+            font-size: 16px;
+            color: var(--light-text);
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .contact-info p strong { color: var(--dark-text); }
+
+        /* --- Improved Email Button --- */
+        .email-button-container { text-align: center; margin-bottom: 40px; }
+        .email-button {
+            background-color: var(--beige-mid);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        .email-button:hover { background-color: var(--beige-dark); }
+        
+        /* Social GIF Buttons */
+        .gif-buttons {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        .gif-buttons img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gif-buttons a:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* --- ✅ RESPONSIVE STYLES --- */
+        @media (max-width: 992px) {
+            /* Navigation for Mobile/Tablet */
+            nav { justify-content: space-between; }
+            .menu { display: none; position: absolute; top: 90px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px 0; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+            .nav-active .menu { display: flex; }
+            .menu a { margin: 15px 0; text-align: center; }
+            .lottie-right { display: none; }
+            .hamburger-menu { display: flex; flex-direction: column; cursor: pointer; background: none; border: none; padding: 0; }
+            .hamburger-menu .line { width: 25px; height: 3px; background-color: var(--dark-text); margin: 4px 0; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 80px; } /* Adjust for potentially smaller nav */
+            .logo-container img { height: 60px; margin-right: 20px;}
+            .contact-section {
+                margin: 30px 15px;
+                padding: 40px 25px;
+            }
+            .contact-section h2 { font-size: 28px; }
+            .gif-buttons img { width: 45px; height: 45px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="nav-left">
+        <div class="logo-container">
+            <a href="index.html"><img src="/images/cozycovelogo.jpeg" alt="Logo"></a>
+        </div>
+        <div class="menu">
+            <a href="index.html">Home</a> 
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="whyus.html">Why Us</a>
+            <a href="conceptocreation.html">From Concept to Creation</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    <div class="nav-right">
+        <div class="lottie-right">
+            <lottie-player src="/animations/engineers.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+        </div>
+        <button class="hamburger-menu">
+            <div class="line"></div><div class="line"></div><div class="line"></div>
+        </button>
+    </div>
+</nav>
+
+<div class="contact-section" data-aos="fade-up">
+    <h2>Get in Touch</h2>
+
+    <div class="contact-info">
+        <p>Ready to start your project? We're here to help.</p>
+        <p><strong>Email:</strong> info@cozycove.com</p>
+        <p><strong>Phone:</strong> +91 6303036308</p>
+        <p><strong>Location:</strong> Amalapuram, Dr. B. R. Ambedkar Konaseema District, Andhra Pradesh</p>
+    </div>
+
+    <div class="email-button-container">
+        <a href="mailto:ramkumarakula66@gmail.com" class="email-button">
+            Send an Email
+        </a>
+    </div>
+
+    <div class="gif-buttons">
+      <a href="https://wa.me/916303036308" target="_blank" title="WhatsApp">
+        <img src="/videos/whatsappvid.gif" alt="WhatsApp" />
+      </a>
+      <a href="https://instagram.com/your_handle" target="_blank" title="Instagram"> 
+        <img src="/videos/instavid.gif" alt="Instagram" />
+      </a>
+      <a href="tel:+916303036308" title="Call Now">
+        <img src="/videos/phonecall.gif" alt="Phone" />
+      </a>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, offset: 50, duration: 800 });
+
+    // JAVASCRIPT FOR HAMBURGER MENU
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.getElementById('navbar');
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+    });
+</script>
+
+</body>
+</html>
