@@ -10,21 +10,13 @@
         :root {
             --beige-mid: #D2B48C; --beige-dark: #A0522D; --dark-text: #3C3633;
         }
-
         body {
             cursor: url('/images/cursor.png') 16 16, auto;
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-image: url('/images/projectsbg.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            padding-top: 90px;
-            box-sizing: border-box;
+            margin: 0; font-family: 'Segoe UI', sans-serif;
+            background-image: url('images/projectsbg.png');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            min-height: 100vh; padding-top: 90px; box-sizing: border-box;
         }
-
-        /* --- ✅ FINAL RESPONSIVE NAVIGATION --- */
         nav {
             background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 10px 40px;
@@ -42,69 +34,32 @@
         .nav-right { margin-left: auto; display: flex; align-items: center; }
         .lottie-right { display: block; }
         .hamburger-menu { display: none; }
-
-        /* --- Content & Card Styles --- */
         .content {
-            padding: 40px;
-            text-align: center;
-            color: white;
+            padding: 40px; text-align: center; color: white;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
         }
-        .content h2 {
-            font-size: 42px;
-            margin-top: 0;
-        }
-
+        .content h2 { font-size: 42px; margin-top: 0; }
         .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 30px; margin-top: 40px;
         }
-
         .card {
-            width: 250px; /* Slightly larger for better visuals */
-            height: 250px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            font-weight: bold;
-            font-size: 18px; /* Adjusted font size */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
+            width: 250px; height: 250px; background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px; display: flex; flex-direction: column;
+            font-weight: bold; font-size: 18px;
+            box-shadow: 0 0 15px rgba(255, 249, 81, 0.3);
+            transition: 0.3s ease; cursor: pointer; overflow: hidden;
         }
-
         .card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 0 25px 8px rgba(254, 219, 114, 0.8);
             transform: scale(1.05);
         }
-
-        .card .image-link {
-            display: block;
-            width: 100%;
-            height: 80%;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
+        .card .image-link { display: block; width: 100%; height: 80%; }
+        .card img { width: 100%; height: 100%; object-fit: cover; }
         .card p {
-            margin: 0;
-            height: 20%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
+            margin: 0; height: 20%; display: flex;
+            align-items: center; justify-content: center; color: #333;
         }
-
-        /* Lightbox */
         #lightbox-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); display: none; justify-content: center;
@@ -113,14 +68,17 @@
         #lightbox-img {
             max-width: 90%; max-height: 85%; border-radius: 10px;
             box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            animation: zoomIn 0.3s ease-in-out;
         }
         #lightbox-close {
             color: white; font-size: 40px; font-weight: bold; position: absolute;
             top: 20px; right: 30px; cursor: pointer; transition: transform 0.3s;
         }
         #lightbox-close:hover { transform: scale(1.2); }
-
-        /* "More Examples" Button & Gallery */
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
+        }
         #more-btn {
             margin-top: 40px; padding: 12px 24px; font-size: 16px; font-weight: bold;
             background-color: var(--beige-mid); color: white; border: none;
@@ -138,9 +96,7 @@
         }
         .more-gallery img:hover { transform: scale(1.05); }
 
-        /* --- ✅ RESPONSIVE STYLES --- */
         @media (max-width: 992px) {
-            /* Navigation for Mobile/Tablet */
             nav { justify-content: space-between; }
             .menu { display: none; position: absolute; top: 90px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px 0; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
             .nav-active .menu { display: flex; }
@@ -149,15 +105,13 @@
             .hamburger-menu { display: flex; flex-direction: column; cursor: pointer; background: none; border: none; padding: 0; }
             .hamburger-menu .line { width: 25px; height: 3px; background-color: var(--dark-text); margin: 4px 0; }
         }
-
         @media (max-width: 768px) {
-            body { padding-top: 80px; }
             .logo-container img { height: 60px; margin-right: 20px; }
             .content { padding: 30px 15px; }
             .content h2 { font-size: 32px; }
             .card-container, .more-gallery { gap: 15px; }
-            .card, .more-gallery img { width: 150px; height: 150px; }
-            .card p { font-size: 14px; }
+            .card { width: calc(50% - 10px); height: auto; }
+            .more-gallery img { width: calc(33.33% - 15px); height: auto; }
         }
     </style>
 </head>
@@ -197,55 +151,49 @@
 
     <div class="card-container">
         <div class="card" data-aos="fade-up">
-            <a href="/images/project1.png" class="image-link lightbox">
-                <img src="/images/project1.png" alt="Project 1">
-            </a>
-            <p>Living Room</p>
+            <a href="images/project1.png" class="image-link lightbox"><img src="images/project1.png" alt="Project 1"></a>
+            <p>Project 1</p>
         </div>
         <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <a href="/images/project2.png" class="image-link lightbox">
-                <img src="/images/project2.png" alt="Project 2">
-            </a>
-            <p>Modern Kitchen</p>
+            <a href="images/project2.png" class="image-link lightbox"><img src="images/project2.png" alt="Project 2"></a>
+            <p>Project 2</p>
         </div>
         <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <a href="/images/project3.png" class="image-link lightbox">
-                <img src="/images/project3.png" alt="Project 3">
-            </a>
-            <p>Bedroom Retreat</p>
+            <a href="images/project3.png" class="image-link lightbox"><img src="images/project3.png" alt="Project 3"></a>
+            <p>Project 3</p>
         </div>
         <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <a href="/images/project4.png" class="image-link lightbox">
-                <img src="/images/project4.png" alt="Project 4">
-            </a>
-            <p>Office Space</p>
+            <a href="images/project4.png" class="image-link lightbox"><img src="images/project4.png" alt="Project 4"></a>
+            <p>Project 4</p>
         </div>
     </div>
 
     <button id="more-btn" data-aos="fade-up">More Examples</button>
 
     <div id="more-gallery" class="more-gallery">
-        </div>
+        <a href="images/examples/examples1.png" class="lightbox"><img src="images/examples/examples1.png" alt="Example 1" data-aos="zoom-in"></a>
+        <a href="images/examples/examples2.png" class="lightbox"><img src="images/examples/examples2.png" alt="Example 2" data-aos="zoom-in"></a>
+        <a href="images/examples/examples3.png" class="lightbox"><img src="images/examples/examples3.png" alt="Example 3" data-aos="zoom-in"></a>
+        <a href="images/examples/examples4.png" class="lightbox"><img src="images/examples/examples4.png" alt="Example 4" data-aos="zoom-in"></a>
+        <a href="images/examples/examples5.png" class="lightbox"><img src="images/examples/examples5.png" alt="Example 5" data-aos="zoom-in"></a>
+        <a href="images/examples/examples6.png" class="lightbox"><img src="images/examples/examples6.png" alt="Example 6" data-aos="zoom-in"></a>
+        <a href="images/examples/examples7.png" class="lightbox"><img src="images/examples/examples7.png" alt="Example 7" data-aos="zoom-in"></a>
+        <a href="images/examples/examples8.png" class="lightbox"><img src="images/examples/examples8.png" alt="Example 8" data-aos="zoom-in"></a>
+    </div>
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // JAVASCRIPT FOR HAMBURGER MENU
         const hamburger = document.querySelector('.hamburger-menu');
         const nav = document.getElementById('navbar');
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('nav-active');
-        });
+        hamburger.addEventListener('click', () => nav.classList.toggle('nav-active'));
         
-        // Initialize AOS animations
         AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // Lightbox and Gallery Logic
+        // --- Lightbox functionality ---
         const overlay = document.getElementById('lightbox-overlay');
         const lightboxImg = document.getElementById('lightbox-img');
-        const moreBtn = document.getElementById('more-btn');
-        const moreGallery = document.getElementById('more-gallery');
 
         function openLightbox(e) {
             e.preventDefault();
@@ -260,40 +208,27 @@
             }
         }
         
+        // Initialize for all lightbox links that exist on the page from the start
         document.querySelectorAll('.lightbox').forEach(link => {
             link.addEventListener('click', openLightbox);
         });
 
         overlay.addEventListener('click', closeLightbox);
         document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        // --- ✅ SIMPLIFIED "MORE EXAMPLES" BUTTON LOGIC ---
+        const moreBtn = document.getElementById('more-btn');
+        const moreGallery = document.getElementById('more-gallery');
 
         moreBtn.addEventListener('click', () => {
             const isVisible = moreGallery.style.display === "flex";
-            if (!isVisible && moreGallery.innerHTML === "") {
-                // Populate the gallery only the first time it's opened
-                const examples = [
-                    'examples1.png', 'examples2.png', 'examples3.png', 'examples4.png',
-                    'examples5.png', 'examples6.png', 'examples7.png', 'examples8.png'
-                ];
-                let galleryHTML = '';
-                examples.forEach(img => {
-                    galleryHTML += `
-                        <a href="/images/examples/${img}" class="lightbox">
-                            <img src="/images/examples/${img}" alt="Example Image" data-aos="zoom-in">
-                        </a>`;
-                });
-                moreGallery.innerHTML = galleryHTML;
-                // Re-initialize lightbox for the new images
-                moreGallery.querySelectorAll('.lightbox').forEach(link => {
-                    link.addEventListener('click', openLightbox);
-                });
-            }
             moreGallery.style.display = isVisible ? "none" : "flex";
             moreBtn.textContent = isVisible ? "More Examples" : "Hide Examples";
+            // If we are showing the gallery, refresh AOS to trigger animations
+            if (!isVisible) {
+                AOS.refresh();
+            }
         });
     });
 </script>
